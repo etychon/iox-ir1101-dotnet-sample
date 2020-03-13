@@ -1,0 +1,2 @@
+docker build -t iox-ir1101-dotnet-example  . 
+ioxclient docker package iox-ir1101-dotnet-example . -n iox-ir1101-dotnet-example --use-targz

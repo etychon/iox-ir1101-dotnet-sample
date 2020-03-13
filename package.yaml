@@ -1,0 +1,26 @@
+descriptor-schema-version: "2.7"
+info:
+  name: iox-ir1101-dotnet-example
+  version: latest
+app:
+  cpuarch: aarch64
+  env:
+    DOTNET_RUNNING_IN_CONTAINER: "true"
+    DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    NUGET_XMLDOC_MODE: skip
+    PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    POWERSHELL_DISTRIBUTION_CHANNEL: PSDocker-DotnetCoreSDK-Debian-10-arm64
+  resources:
+    network:
+    - interface-name: eth0
+      ports: {}
+    profile: exclusive
+  startup:
+    rootfs: rootfs.tar
+    target:
+    - dotnet
+    - run
+    - --project
+    - /myApp
+    workdir: /
+  type: docker
